@@ -16,7 +16,6 @@ router.post('/all', async (req, res) => {
   try {
     Publication.hasMany(PublicationTags)
     const {page, age, types, tags, search} = req.body
-    console.log(tags)
     const limit = 16
     const options = {
       where: {},

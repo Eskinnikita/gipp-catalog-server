@@ -9,6 +9,7 @@ const passport = require('passport')
 const generator = require('generate-password');
 const transporter = require('../utils/nodemailerClient')
 const multer = require('multer')
+const bcrypt = require('bcrypt');
 
 const router = express.Router()
 
@@ -41,6 +42,7 @@ const upload = multer({
 router.post('/confirm', passport.authenticate('jwt', {session: false}), async (req, res) => {
   try {
     const {role, id} = req.body
+    // const saltRounds = 10;
     let Model
     switch (role) {
       case 2:
@@ -58,7 +60,11 @@ router.post('/confirm', passport.authenticate('jwt', {session: false}), async (r
       numbers: true
     });
 
-    await Model.update({approved: true, password: newPassword}, {
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hash = await bcrypt.hash(newPassword, salt);
+
+    await Model.update({approved: true, password: hash}, {
       where: {
         id
       }
