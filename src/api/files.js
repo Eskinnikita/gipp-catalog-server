@@ -32,7 +32,7 @@ const upload = multer({
 //Загрузка файлов новостной статьи
 router.post('/save/image', upload.single('image'),  passport.authenticate("jwt", {session: false}), async (req, res) => {
   try {
-    const serverUrl = process.env.PRODUCTION == 'true' ? '' : 'http://localhost:8082'
+    const serverUrl = process.env.PRODUCTION == 'true' ? 'http://gipp-server.std-272.ist.mospolytech.ru' : 'http://localhost:8082'
     if (req.file.path !== 'null') {
       res.status(200).json({
         success: 1,

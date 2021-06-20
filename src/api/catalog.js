@@ -21,6 +21,7 @@ router.post('/all', async (req, res) => {
       where: {},
       limit: limit,
       offset: (+page - 1) * limit,
+      order: [['createdAt', 'DESC']],
     }
     if(tags.length) {
       options.include = [

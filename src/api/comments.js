@@ -27,11 +27,11 @@ router.post('/', passport.authenticate("jwt", {session: false}), async (req, res
         },
         {
           model: User,
-          attributes: ['id', 'name', 'role']
+          attributes: ['id', 'name', 'role', 'logoUrl']
         },
         {
           model: Organ,
-          attributes: ['id', 'name', 'role']
+          attributes: ['id', 'name', 'role', 'logoUrl']
         }
       ]
     }).catch(e => {

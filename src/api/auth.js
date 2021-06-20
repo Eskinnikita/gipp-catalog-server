@@ -100,7 +100,7 @@ router.post('/register', async (req, res) => {
 
 //Отправка запроса организации или издателя
 router.post('/request', async (req, res) => {
-    const {name, phone, email, address, role, approved} = req.body
+    const {name, phone, email, address, role, approved, blocked} = req.body
     let Model
     if (+role === 2) {
         Model = Organ
@@ -119,7 +119,7 @@ router.post('/request', async (req, res) => {
         })
     }
 
-    const newRequest = new Model({name, phone, email, address, role, approved})
+    const newRequest = new Model({name, phone, email, address, role, approved, blocked})
     const createdRequest = await newRequest.save().catch(
         e => {
             console.log("Error: ", e);

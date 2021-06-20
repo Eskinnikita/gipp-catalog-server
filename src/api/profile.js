@@ -47,10 +47,10 @@ router.post('/tab-content', async (req, res) => {
             model: Publisher, attributes: ['id', 'name', 'logoUrl', 'role'],
           },
           {
-            model: User, attributes: ['id', 'name', 'role'],
+            model: User, attributes: ['id', 'name', 'role', 'logoUrl',],
           },
           {
-            model: Organ, attributes: ['id', 'name', 'role'],
+            model: Organ, attributes: ['id', 'name', 'role', 'logoUrl',],
           }
         ]
       })

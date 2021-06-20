@@ -88,11 +88,11 @@ router.get('/:id', async (req, res) => {
           },
           {
             model: User,
-            attributes: ['id', 'name', 'role']
+            attributes: ['id', 'name', 'role', 'logoUrl']
           },
           {
             model: Organ,
-            attributes: ['id', 'name', 'role']
+            attributes: ['id', 'name', 'role', 'logoUrl']
           }
         ]
       }
@@ -130,10 +130,10 @@ router.post('/all', async (req, res) => {
           model: Publisher, attributes: ['id', 'name', 'logoUrl', 'role'],
         },
         {
-          model: User, attributes: ['id', 'name', 'role'],
+          model: User, attributes: ['id', 'name', 'role', 'logoUrl'],
         },
         {
-          model: Organ, attributes: ['id', 'name', 'role'],
+          model: Organ, attributes: ['id', 'name', 'role', 'logoUrl'],
         }
       ]
     }

@@ -16,11 +16,11 @@ app.use(express.urlencoded({
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
-app.use(helmet(
-    {
-        contentSecurityPolicy: false,
-    }
-));
+// app.use(helmet(
+//     {
+//         contentSecurityPolicy: false,
+//     }
+// ));
 app.use('/uploads', express.static('uploads'))
 
 app.get("/api/healthcheck", async (req, res) => {

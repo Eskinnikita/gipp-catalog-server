@@ -77,6 +77,7 @@ router.post('/create', upload.single('cover'), passport.authenticate("jwt", {ses
 router.post('/', async (req, res) => {
     try {
         const {publicationId, userId} = req.body
+        console.log(req.body)
         Publication.hasMany(Review)
         Publisher.hasOne(PublisherConfig)
         PublicationTags.belongsTo(PubTag, {foreignKey: 'pubTagId'})
@@ -94,11 +95,11 @@ router.post('/', async (req, res) => {
                         },
                         {
                             model: User,
-                            attributes: ['id', 'name', 'role']
+                            attributes: ['id', 'name', 'role', 'logoUrl']
                         },
                         {
                             model: Organ,
-                            attributes: ['id', 'name', 'role']
+                            attributes: ['id', 'name', 'role', 'logoUrl']
                         }
                     ]
                 }
@@ -235,7 +236,7 @@ router.get('/main-page', async (req, res) => {
             attributes: {exclude: ['blocks']}
         })
         const publications = await Publication.findAll({
-            limit: 11,
+            limit: 9,
             order: [['updatedAt', 'DESC']],
             attributes: ['id', 'coverLink', 'title', 'age', 'count', 'period']
         })
